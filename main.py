@@ -1,7 +1,11 @@
 import json
 from IdeasOrganizer import IdeasOrganizer
 
-# Open json files and pass them to IdeasOrganizer
+with open("all.json", "r") as all, open("favorites.json", "r") as favorites, open("completed.json", "r") as completed:
+  all_ideas = json.load(all)
+  favorite_ideas = json.load(favorites)
+  completed_ideas = json.load(completed)
+  organizer = IdeasOrganizer(all_ideas, favorite_ideas, completed_ideas)
 
 done = False
 
