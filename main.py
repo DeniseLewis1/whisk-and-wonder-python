@@ -74,6 +74,10 @@ How can I help you?
   else:
     print("\nNot a valid command.")
 
+with open("all.json", "w") as write_all, open("favorites.json", "w") as write_favorites, open("completed.json", "w") as write_completed:
+      json.dump(organizer.get_all(), write_all)
+      json.dump(organizer.get_favorites(), write_favorites)
+      json.dump(organizer.get_completed(), write_completed)
 
 # Save list of ideas in json files
 #   All ideas, favorites, completed
