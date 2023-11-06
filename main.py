@@ -29,18 +29,24 @@ How can I help you?
 
   # View all ideas
   if user_command == "1":
+    all_ideas = organizer.get_all()
     print("\nAll baking ideas: ")
-    print(f"\n{organizer.get_all()}")
+    for idea in all_ideas:
+      print(f"\n{idea}: {all_ideas[idea]}")
 
   # View favorite ideas
   elif user_command == "2":
+    favorite_ideas = organizer.get_favorites()
     print("\nFavorite baking ideas: ")
-    print(f"\n{organizer.get_favorites()}")
+    for idea in favorite_ideas:
+      print(f"\n{idea}: {favorite_ideas[idea]}")
     
   # View completed ideas
   elif user_command == "3":
+    completed_ideas = organizer.get_completed()
     print("\nCompleted baking ideas: ")
-    print(f"\n{organizer.get_completed()}")
+    for idea in completed_ideas:
+      print(f"\n{idea}: {completed_ideas[idea]}")
 
   # Search ideas
   elif user_command == "4":

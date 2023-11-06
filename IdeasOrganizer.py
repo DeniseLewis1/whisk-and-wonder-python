@@ -4,14 +4,14 @@ class IdeasOrganizer:
     self.favorites = favorites
     self.completed = completed
 
-  def get_all(self):
-    return 
+  def get_all(self):  
+    return self.all
 
   def get_favorites(self):
-    return
+    return self.favorites
 
   def get_completed(self):
-    return
+    return self.completed
 
   def search(self, word):
     return
