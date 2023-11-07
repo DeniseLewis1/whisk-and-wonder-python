@@ -50,8 +50,10 @@ How can I help you?
 
   # Search ideas
   elif user_command == "4":
-    user_input = input("Enter search term: ")
-    print(f"\n{organizer.search(user_input)}")
+    user_input = input("\nEnter search term: ")
+    matches = organizer.search(user_input)
+    for idea in matches:
+      print(f"\n{idea}: {matches[idea]}")
 
   # Add ideas
   elif user_command == "5":

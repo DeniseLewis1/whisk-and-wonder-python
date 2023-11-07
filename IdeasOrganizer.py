@@ -14,7 +14,14 @@ class IdeasOrganizer:
     return self.completed
 
   def search(self, word):
-    return
+    matches = {}
+    
+    for idea in self.all:
+      if word in idea:
+        matches[idea] = self.all[idea]
+      if word in self.all[idea]:
+        matches[idea] = self.all[idea]
+    return matches
 
   def add_idea(self, idea, tags):
     return
