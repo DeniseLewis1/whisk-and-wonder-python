@@ -57,9 +57,12 @@ How can I help you?
 
   # Add ideas
   elif user_command == "5":
-    idea = input("Enter idea to add to list: ")
-    tags = input("Enter tags associated with this idea: ")
-    print(f"\n{organizer.add_idea(idea, tags)}")
+    idea = input("\nEnter idea to add to list: ")
+    if idea in organizer.get_all():
+      print("\nThis idea already exists in the list.")
+    else:
+      tags = input("\nEnter tags associated with this idea (separate tags with a comma): ")
+      print(f"\n{organizer.add_idea(idea, tags)}")
 
   # Edit ideas
   elif user_command == "6":

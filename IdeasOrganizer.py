@@ -24,7 +24,8 @@ class IdeasOrganizer:
     return matches
 
   def add_idea(self, idea, tags):
-    return
+    self.all[idea] = list(tags.split(","))
+    return f"{idea} has been added"
 
   def edit_idea(self, idea):
     return
