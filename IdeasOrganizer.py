@@ -27,8 +27,9 @@ class IdeasOrganizer:
     self.all[idea] = list(tags.split(","))
     return f"{idea} has been added"
 
-  def edit_idea(self, idea):
-    return
+  def edit_idea(self, idea, tags):
+    self.all[idea] = list(tags.split(","))
+    return f"{idea} has been updated"
 
   def delete_idea(self, idea):
     return

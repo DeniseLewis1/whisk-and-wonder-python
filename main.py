@@ -7,6 +7,8 @@ with open("all.json", "r") as all, open("favorites.json", "r") as favorites, ope
   completed_ideas = json.load(completed)
   organizer = IdeasOrganizer(all_ideas, favorite_ideas, completed_ideas)
 
+# Create global variable for all_ideas (maybe variables for the other two lists)
+
 done = False
 
 while not done:
@@ -67,9 +69,16 @@ How can I help you?
   # Edit ideas
   elif user_command == "6":
     print("\nAll baking ideas: ")
-    print(f"\n{organizer.get_all()}")
-    user_input = input("Enter the number of the idea to edit: ")
-    print(f"\n{organizer.edit_idea(user_input)}")
+    all_ideas = organizer.get_all()
+    for idea in all_ideas:
+      print(f"\n{idea}: {all_ideas[idea]}")
+    idea = input("\nEnter the idea to edit: ")
+    if idea not in all_ideas:
+      print("\nThis idea does not exist in the list.")
+    else:
+      print(f"\n{idea}: {all_ideas[idea]}")
+      tags = input("\nEnter tags associated with this idea (separate tags with a comma): ")
+      print(f"\n{organizer.edit_idea(idea, tags)}")
 
   # Delete ideas
   elif user_command == "7":
