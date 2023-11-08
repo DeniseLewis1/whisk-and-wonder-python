@@ -83,9 +83,14 @@ How can I help you?
   # Delete ideas
   elif user_command == "7":
     print("\nAll baking ideas: ")
-    print(f"\n{organizer.get_all()}")
-    user_input = input("Enter the number of the idea to delete: ")
-    print(f"\n{organizer.delete_idea(user_input)}")
+    all_ideas = organizer.get_all()
+    for idea in all_ideas:
+      print(f"\n{idea}: {all_ideas[idea]}")
+    idea = input("\nEnter the idea to delete: ")
+    if idea not in all_ideas:
+      print("\nThis idea does not exist in the list.")
+    else:
+      print(f"\n{organizer.delete_idea(idea)}")
   
   # Exit
   elif user_command == "exit" or user_command == "Exit" or user_command == "EXIT":
@@ -98,10 +103,3 @@ with open("all.json", "w") as write_all, open("favorites.json", "w") as write_fa
       json.dump(organizer.get_all(), write_all)
       json.dump(organizer.get_favorites(), write_favorites)
       json.dump(organizer.get_completed(), write_completed)
-
-# Save list of ideas in json files
-#   All ideas, favorites, completed
-#   Use a dictionary to store ideas
-#     Key: idea ("")
-#     Value: list of tags ([])
-#   All ideas need to save the favorites and completed statuses

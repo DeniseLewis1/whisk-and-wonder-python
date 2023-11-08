@@ -32,4 +32,5 @@ class IdeasOrganizer:
     return f"{idea} has been updated"
 
   def delete_idea(self, idea):
-    return
+    del self.all[idea]
+    return f"{idea} has been deleted"
