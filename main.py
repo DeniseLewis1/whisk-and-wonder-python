@@ -7,7 +7,13 @@ with open("all.json", "r") as all, open("favorites.json", "r") as favorites, ope
   completed_ideas = json.load(completed)
   organizer = IdeasOrganizer(all_ideas, favorite_ideas, completed_ideas)
 
-# Create global variable for all_ideas (maybe variables for the other two lists)
+all_ideas = organizer.get_all()
+favorite_ideas = organizer.get_favorites()
+completed_ideas = organizer.get_completed()
+
+def print_ideas(idea_list):
+  for idea in idea_list:
+    print(f"\n  {idea}: {idea_list[idea]}")
 
 done = False
 
@@ -31,36 +37,31 @@ How can I help you?
 
   # View all ideas
   if user_command == "1":
-    all_ideas = organizer.get_all()
     print("\nAll baking ideas: ")
-    for idea in all_ideas:
-      print(f"\n{idea}: {all_ideas[idea]}")
+    print_ideas(all_ideas)
 
   # View favorite ideas
   elif user_command == "2":
-    favorite_ideas = organizer.get_favorites()
     print("\nFavorite baking ideas: ")
-    for idea in favorite_ideas:
-      print(f"\n{idea}: {favorite_ideas[idea]}")
+    print_ideas(favorite_ideas)
     
   # View completed ideas
   elif user_command == "3":
-    completed_ideas = organizer.get_completed()
     print("\nCompleted baking ideas: ")
-    for idea in completed_ideas:
-      print(f"\n{idea}: {completed_ideas[idea]}")
+    print_ideas(completed_ideas)
 
   # Search ideas
   elif user_command == "4":
     user_input = input("\nEnter search term: ")
     matches = organizer.search(user_input)
-    for idea in matches:
-      print(f"\n{idea}: {matches[idea]}")
+    if not matches:
+      print(f"\nNo matches found for '{user_input}'")
+    print_ideas(matches)
 
   # Add ideas
   elif user_command == "5":
-    idea = input("\nEnter idea to add to list: ")
-    if idea in organizer.get_all():
+    idea = input("\nEnter an idea to add to the list: ")
+    if idea in all_ideas:
       print("\nThis idea already exists in the list.")
     else:
       tags = input("\nEnter tags associated with this idea (separate tags with a comma): ")
@@ -69,9 +70,7 @@ How can I help you?
   # Edit ideas
   elif user_command == "6":
     print("\nAll baking ideas: ")
-    all_ideas = organizer.get_all()
-    for idea in all_ideas:
-      print(f"\n{idea}: {all_ideas[idea]}")
+    print_ideas(all_ideas)
     idea = input("\nEnter the idea to edit: ")
     if idea not in all_ideas:
       print("\nThis idea does not exist in the list.")
@@ -83,9 +82,7 @@ How can I help you?
   # Delete ideas
   elif user_command == "7":
     print("\nAll baking ideas: ")
-    all_ideas = organizer.get_all()
-    for idea in all_ideas:
-      print(f"\n{idea}: {all_ideas[idea]}")
+    print_ideas(all_ideas)
     idea = input("\nEnter the idea to delete: ")
     if idea not in all_ideas:
       print("\nThis idea does not exist in the list.")

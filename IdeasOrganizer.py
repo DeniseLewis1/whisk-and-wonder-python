@@ -19,10 +19,8 @@ class IdeasOrganizer:
     for idea in self.all:
       if word in idea:
         matches[idea] = self.all[idea]
-        print(f"1. {matches[idea]}")
       if word in self.all[idea]:
         matches[idea] = self.all[idea]
-        print(f"2. {matches[idea]}")
     return matches
 
   def add_idea(self, idea, tags):
