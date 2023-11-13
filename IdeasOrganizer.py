@@ -42,3 +42,11 @@ class IdeasOrganizer:
   def remove_favorite(self, idea):
     del self.favorites[idea]
     return f"{idea} has been removed from favorites"
+
+  def add_completed(self, idea):
+    self.completed[idea] = self.all[idea]
+    return f"{idea} has been added to completed"
+  
+  def remove_completed(self, idea):
+    del self.completed[idea]
+    return f"{idea} has been removed from completed"

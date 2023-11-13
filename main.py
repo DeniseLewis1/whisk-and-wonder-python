@@ -31,6 +31,8 @@ How can I help you?
   7: Delete ideas
   8: Add to favorites
   9: Remove from favorites
+ 10: Add to completed
+ 11: Remove from completed
 
   Select a number or type 'Exit' to quit: 
 
@@ -98,8 +100,9 @@ How can I help you?
     idea = input("\nEnter an idea to add to favorites: ")
     if idea in favorite_ideas:
       print("\nThis idea already exists in favorites.")
+    elif idea not in all_ideas:
+      print("\nThis idea does not exist in all ideas.")
     else:
-      print("Add favorite")
       print(f"\n{organizer.add_favorite(idea)}")
 
   # Remove favorite idea
@@ -111,6 +114,28 @@ How can I help you?
       print("\nThis idea does not exist in favorites.")
     else:
       print(f"\n{organizer.remove_favorite(idea)}")
+
+  # Add completed idea
+  elif user_command == "10":
+    print("\nAll baking ideas: ")
+    print_ideas(all_ideas)
+    idea = input("\nEnter an idea to add to completed: ")
+    if idea in completed_ideas:
+      print("\nThis idea already exists in completed.")
+    elif idea not in all_ideas:
+      print("\nThis idea does not exist in all ideas.")
+    else:
+      print(f"\n{organizer.add_completed(idea)}")
+
+  # Remove completed idea
+  elif user_command == "11":
+    print("\nCompleted baking ideas: ")
+    print_ideas(completed_ideas)
+    idea = input("\nEnter the idea to remove from completed: ")
+    if idea not in completed_ideas:
+      print("\nThis idea does not exist in completed.")
+    else:
+      print(f"\n{organizer.remove_completed(idea)}")
   
   # Exit
   elif user_command == "exit" or user_command == "Exit" or user_command == "EXIT":
