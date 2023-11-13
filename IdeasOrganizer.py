@@ -25,7 +25,6 @@ class IdeasOrganizer:
 
   def add_idea(self, idea, tags):
     self.all[idea] = list(tags.split(", "))
-    print(self.all[idea])
     return f"{idea} has been added"
 
   def edit_idea(self, idea, tags):
@@ -35,3 +34,11 @@ class IdeasOrganizer:
   def delete_idea(self, idea):
     del self.all[idea]
     return f"{idea} has been deleted"
+
+  def add_favorite(self, idea):
+    self.favorites[idea] = self.all[idea]
+    return f"{idea} has been added to favorites"
+
+  def remove_favorite(self, idea):
+    del self.favorites[idea]
+    return f"{idea} has been removed from favorites"

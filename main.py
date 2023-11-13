@@ -29,6 +29,8 @@ How can I help you?
   5: Add ideas
   6: Edit ideas
   7: Delete ideas
+  8: Add to favorites
+  9: Remove from favorites
 
   Select a number or type 'Exit' to quit: 
 
@@ -88,6 +90,27 @@ How can I help you?
       print("\nThis idea does not exist in the list.")
     else:
       print(f"\n{organizer.delete_idea(idea)}")
+
+  # Add favorite idea
+  elif user_command == "8":
+    print("\nAll baking ideas: ")
+    print_ideas(all_ideas)
+    idea = input("\nEnter an idea to add to favorites: ")
+    if idea in favorite_ideas:
+      print("\nThis idea already exists in favorites.")
+    else:
+      print("Add favorite")
+      print(f"\n{organizer.add_favorite(idea)}")
+
+  # Remove favorite idea
+  elif user_command == "9":
+    print("\nFavorite baking ideas: ")
+    print_ideas(favorite_ideas)
+    idea = input("\nEnter the idea to remove from favorites: ")
+    if idea not in favorite_ideas:
+      print("\nThis idea does not exist in favorites.")
+    else:
+      print(f"\n{organizer.remove_favorite(idea)}")
   
   # Exit
   elif user_command == "exit" or user_command == "Exit" or user_command == "EXIT":
